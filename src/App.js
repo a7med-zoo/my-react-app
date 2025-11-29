@@ -3,6 +3,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/App.css';
+import './App.css';
+
 
 // في imports أضف:
 import Reports from './pages/Reports';
@@ -22,7 +24,8 @@ import Navbar from './components/Navbar';
 function App() {
   return (
     <Router>
-      <div className="App" dir="rtl">
+      <div className="App">
+    </div>
         <Navbar />
         <div className="container mt-4">
           <Routes>
@@ -32,7 +35,7 @@ function App() {
             <Route path="/invoices" element={<Invoices />} />
           </Routes>
         </div>
-      </div>
+      
     </Router>
   );
 }
