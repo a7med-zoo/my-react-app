@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { storageService } from '../services/storage';
 
 const Dashboard = () => {
@@ -237,7 +238,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* بطاقات التنقل السريع */}
+      {/* بطاقات التنقل السريع - معدل */}
       <div className="row mt-4">
         <div className="col-12">
           <div className="card">
@@ -248,22 +249,22 @@ const Dashboard = () => {
               </h5>
               <div className="row text-center">
                 <div className="col-md-3 mb-3">
-                  <a href="/products" className="btn btn-outline-primary btn-lg w-100 py-3">
+                  <Link to="/products" className="btn btn-outline-primary btn-lg w-100 py-3">
                     <i className="fas fa-plus-circle fa-2x mb-2 d-block"></i>
                     إضافة منتج
-                  </a>
+                  </Link>
                 </div>
                 <div className="col-md-3 mb-3">
-                  <a href="/customers" className="btn btn-outline-success btn-lg w-100 py-3">
+                  <Link to="/customers" className="btn btn-outline-success btn-lg w-100 py-3">
                     <i className="fas fa-user-plus fa-2x mb-2 d-block"></i>
                     إضافة عميل
-                  </a>
+                  </Link>
                 </div>
                 <div className="col-md-3 mb-3">
-                  <a href="/invoices" className="btn btn-outline-warning btn-lg w-100 py-3">
+                  <Link to="/invoices" className="btn btn-outline-warning btn-lg w-100 py-3">
                     <i className="fas fa-file-invoice-dollar fa-2x mb-2 d-block"></i>
                     إنشاء فاتورة
-                  </a>
+                  </Link>
                 </div>
                 <div className="col-md-3 mb-3">
                   <button className="btn btn-outline-info btn-lg w-100 py-3" onClick={calculateStats}>
