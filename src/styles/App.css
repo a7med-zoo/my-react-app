@@ -130,3 +130,90 @@
 .activity-item:hover .activity-icon {
   transform: scale(1.1);
 }
+/* تنسيقات جرس الإشعارات */
+.notification-bell {
+  margin-left: 15px;
+}
+
+.notification-bell .btn {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.notification-bell .btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+/* تحسين القائمة المنسدلة للإشعارات */
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.dropdown-item {
+  border-radius: 5px;
+  margin: 2px 5px;
+  transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* تنسيقات الـ Navbar للموبايل */
+@media (max-width: 768px) {
+  .notification-bell {
+    margin-left: 10px;
+    margin-right: 5px;
+  }
+  
+  .notification-bell .btn {
+    width: 35px;
+    height: 35px;
+  }
+  
+  /* تأكد أن القائمة المنسدلة بتكون فوق كل شيء */
+  .dropdown-menu {
+    position: fixed !important;
+    top: 60px !important;
+    right: 10px !important;
+    left: auto !important;
+    transform: none !important;
+  }
+}
+
+/* تنسيقات للشاشات الكبيرة */
+@media (min-width: 769px) {
+  .dropdown-menu {
+    position: absolute;
+    right: 0;
+    left: auto;
+  }
+}
+
+/* تحسين مظهر badge الإشعارات */
+.badge.bg-danger {
+  font-size: 0.7rem;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* تأثيرات للزر */
+.btn-outline-light {
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.btn-outline-light:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}

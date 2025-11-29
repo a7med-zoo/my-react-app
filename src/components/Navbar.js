@@ -23,15 +23,20 @@ const Navbar = () => {
           <span className="d-inline d-sm-none">MM</span>
         </Link>
 
-        {/* زر القائمة للموبايل */}
-        <button 
-          className="navbar-toggler"
-          type="button"
-          onClick={toggleMenu}
-          aria-label="تبديل القائمة"
-        >
-          <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>
-        </button>
+        {/* جرس الإشعارات - خارج القائمة */}
+        <div className="d-flex align-items-center">
+          <NotificationBell />
+          
+          {/* زر القائمة للموبايل */}
+          <button 
+            className="navbar-toggler ms-2"
+            type="button"
+            onClick={toggleMenu}
+            aria-label="تبديل القائمة"
+          >
+            <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>
+          </button>
+        </div>
 
         {/* محتوى القائمة */}
         <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`}>
@@ -75,18 +80,18 @@ const Navbar = () => {
               </Link>
             </li>
 
-       {/* الفواتير */}
-<li className="nav-item">
-  <Link 
-    className="nav-link" 
-    to="/invoices"
-    onClick={closeMenu}
-  >
-    <i className="fas fa-file-invoice me-2"></i>
-    <span className="d-none d-md-inline">الفواتير</span>
-    <span className="d-inline d-md-none">الفواتير</span>
-  </Link>
-</li>
+            {/* الفواتير */}
+            <li className="nav-item">
+              <Link 
+                className="nav-link" 
+                to="/invoices"
+                onClick={closeMenu}
+              >
+                <i className="fas fa-file-invoice me-2"></i>
+                <span className="d-none d-md-inline">الفواتير</span>
+                <span className="d-inline d-md-none">الفواتير</span>
+              </Link>
+            </li>
 
             {/* التقارير */}
             <li className="nav-item">
@@ -114,13 +119,6 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-
-          {/* الإشعارات */}
-          <div className="navbar-nav">
-            <div className="nav-item">
-              <NotificationBell />
-            </div>
-          </div>
         </div>
       </div>
     </nav>

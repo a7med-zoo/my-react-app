@@ -8,7 +8,6 @@ const NotificationBell = () => {
 
   useEffect(() => {
     loadNotifications();
-    // طلب إذن الإشعارات عند التحميل
     notificationService.requestPermission();
   }, []);
 
@@ -55,10 +54,11 @@ const NotificationBell = () => {
   return (
     <div className="dropdown">
       <button
-        className="btn btn-outline-light position-relative"
+        className="btn btn-outline-light position-relative border-0"
         onClick={() => setShowDropdown(!showDropdown)}
+        style={{ marginRight: '10px' }}
       >
-        <i className="fas fa-bell"></i>
+        <i className="fas fa-bell fs-5"></i>
         {unreadCount > 0 && (
           <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
             {unreadCount}
@@ -67,7 +67,15 @@ const NotificationBell = () => {
       </button>
 
       {showDropdown && (
-        <div className="dropdown-menu dropdown-menu-end show" style={{ width: '350px', maxHeight: '400px', overflowY: 'auto' }}>
+        <div 
+          className="dropdown-menu dropdown-menu-end show" 
+          style={{ 
+            width: '350px', 
+            maxHeight: '400px', 
+            overflowY: 'auto',
+            marginTop: '10px'
+          }}
+        >
           <div className="dropdown-header d-flex justify-content-between align-items-center">
             <span>الإشعارات</span>
             <div>
