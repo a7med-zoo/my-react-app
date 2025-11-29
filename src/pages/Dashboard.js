@@ -11,22 +11,18 @@ const Dashboard = () => {
     recentActivity: []
   });
 
-  // حساب الإحصائيات من البيانات المحفوظة
   useEffect(() => {
     calculateStats();
   }, []);
 
   const calculateStats = () => {
-    // جلب البيانات من التخزين المحلي
     const products = storageService.load('products') || [];
     const customers = storageService.load('customers') || [];
     const invoices = storageService.load('invoices') || [];
 
-    // حساب الإحصائيات
     const totalRevenue = invoices.reduce((sum, invoice) => sum + (invoice.amount || 0), 0);
     const lowStockProducts = products.filter(product => product.quantity < 5).length;
 
-    // النشاط الحديث
     const recentActivity = [
       ...products.slice(-3).map(p => ({ type: 'product', item: p, time: p.createdAt })),
       ...customers.slice(-2).map(c => ({ type: 'customer', item: c, time: c.joinDate })),
@@ -71,10 +67,11 @@ const Dashboard = () => {
       <div className="row mb-4">
         <div className="col-12">
           <h1 className="text-center text-primary mb-3">
-            <i className="fas fa-chart-line me-2"></i>
+            <i className="fas fa-tachometer-alt me-2"></i>
             لوحة تحكم MicroManage
           </h1>
           <p className="text-center text-muted fs-5">
+            <i className="fas fa-chart-line me-2"></i>
             نظام متكامل لإدارة المشروعات الصغيرة
           </p>
         </div>
@@ -83,45 +80,53 @@ const Dashboard = () => {
       {/* بطاقات الإحصائيات */}
       <div className="row mt-4">
         <div className="col-xl-3 col-md-6 mb-4">
-          <div className="card stat-card bg-primary">
+          <div className="card stat-card bg-primary text-white">
             <div className="card-body text-center">
-              <i className="fas fa-box fa-3x mb-3"></i>
-              <h5 className="card-title">إجمالي المنتجات</h5>
-              <h2 className="card-text">{stats.totalProducts}</h2>
-              <p className="mb-0">منتج في المخزن</p>
+              <i className="fas fa-boxes fa-3x mb-3"></i>
+              <h3 className="card-title">{stats.totalProducts}</h3>
+              <p className="card-text mb-0">
+                <i className="fas fa-cube me-1"></i>
+                إجمالي المنتجات
+              </p>
             </div>
           </div>
         </div>
         
         <div className="col-xl-3 col-md-6 mb-4">
-          <div className="card stat-card bg-success">
+          <div className="card stat-card bg-success text-white">
             <div className="card-body text-center">
               <i className="fas fa-users fa-3x mb-3"></i>
-              <h5 className="card-title">إجمالي العملاء</h5>
-              <h2 className="card-text">{stats.totalCustomers}</h2>
-              <p className="mb-0">عميل مسجل</p>
+              <h3 className="card-title">{stats.totalCustomers}</h3>
+              <p className="card-text mb-0">
+                <i className="fas fa-user me-1"></i>
+                إجمالي العملاء
+              </p>
             </div>
           </div>
         </div>
         
         <div className="col-xl-3 col-md-6 mb-4">
-          <div className="card stat-card bg-warning">
+          <div className="card stat-card bg-warning text-white">
             <div className="card-body text-center">
-              <i className="fas fa-file-invoice fa-3x mb-3"></i>
-              <h5 className="card-title">إجمالي الفواتير</h5>
-              <h2 className="card-text">{stats.totalInvoices}</h2>
-              <p className="mb-0">فاتورة مبيعات</p>
+              <i className="fas fa-file-invoice-dollar fa-3x mb-3"></i>
+              <h3 className="card-title">{stats.totalInvoices}</h3>
+              <p className="card-text mb-0">
+                <i className="fas fa-receipt me-1"></i>
+                إجمالي الفواتير
+              </p>
             </div>
           </div>
         </div>
         
         <div className="col-xl-3 col-md-6 mb-4">
-          <div className="card stat-card bg-info">
+          <div className="card stat-card bg-info text-white">
             <div className="card-body text-center">
               <i className="fas fa-money-bill-wave fa-3x mb-3"></i>
-              <h5 className="card-title">إجمالي المبيعات</h5>
-              <h2 className="card-text">{stats.totalRevenue.toLocaleString()}</h2>
-              <p className="mb-0">جنيه مصري</p>
+              <h3 className="card-title">{stats.totalRevenue.toLocaleString()}</h3>
+              <p className="card-text mb-0">
+                <i className="fas fa-chart-line me-1"></i>
+                إجمالي المبيعات
+              </p>
             </div>
           </div>
         </div>
@@ -159,7 +164,7 @@ const Dashboard = () => {
                 
                 <div className="list-group-item d-flex justify-content-between align-items-center">
                   <div>
-                    <i className="fas fa-boxes text-primary me-2"></i>
+                    <i className="fas fa-box text-primary me-2"></i>
                     متوسط سعر المنتج
                   </div>
                   <span className="badge bg-primary rounded-pill fs-6">

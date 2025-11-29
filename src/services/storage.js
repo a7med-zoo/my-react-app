@@ -4,9 +4,10 @@ export const storageService = {
   save: (key, data) => {
     try {
       localStorage.setItem(key, JSON.stringify(data));
+      console.log(`تم حفظ ${key}:`, data);
       return true;
     } catch (error) {
-      console.error('Error saving to localStorage:', error);
+      console.error(`خطأ في حفظ ${key}:`, error);
       return false;
     }
   },
@@ -15,9 +16,11 @@ export const storageService = {
   load: (key) => {
     try {
       const data = localStorage.getItem(key);
-      return data ? JSON.parse(data) : [];
+      const result = data ? JSON.parse(data) : [];
+      console.log(`تم تحميل ${key}:`, result);
+      return result;
     } catch (error) {
-      console.error('Error loading from localStorage:', error);
+      console.error(`خطأ في تحميل ${key}:`, error);
       return [];
     }
   },
@@ -28,7 +31,18 @@ export const storageService = {
       localStorage.removeItem(key);
       return true;
     } catch (error) {
-      console.error('Error removing from localStorage:', error);
+      console.error(`خطأ في حذف ${key}:`, error);
+      return false;
+    }
+  },
+
+  // تنظيف كل البيانات
+  clear: () => {
+    try {
+      localStorage.clear();
+      return true;
+    } catch (error) {
+      console.error('خطأ في تنظيف التخزين:', error);
       return false;
     }
   }

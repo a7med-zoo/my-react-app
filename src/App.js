@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/first */
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -5,12 +6,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/App.css';
 import './App.css';
 
-
-// في imports أضف:
+// في الـ imports أضف:
 import Reports from './pages/Reports';
+import Backup from './pages/Backup';
 
-// في الـ Routes أضف:
-<Route path="/reports" element={<Reports />} />
 
 // استيراد الصفحات
 import Dashboard from './pages/Dashboard';
@@ -33,6 +32,9 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/customers" element={<Customers />} />
             <Route path="/invoices" element={<Invoices />} />
+            <Route path="/reports" element={<Reports />} />
+            
+            <Route path="/backup" element={<Backup />} />
           </Routes>
         </div>
       
